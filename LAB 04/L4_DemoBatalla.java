@@ -25,6 +25,30 @@ public class L4_DemoBatalla {
             mostrarPorNombre(misNaves);
             mostrarPorPuntos(misNaves);
             System.out.println("\nNave con mayor número de puntos: " + mostrarMayorPuntos(misNaves));
+
+            //leer un nombre
+            //mostrar los datos de la nave con dicho nombre, mensaje de “no encontrado” en caso contrario
+            System.out.println("Nombre a buscar:");
+            String nombre = sc.next();
+            int pos = busquedaLinealNombre(misNaves,nombre);
+            printLinealNombre(misNaves, pos);
+            
+            //Burbuja
+            ordenarPorPuntosBurbuja(misNaves);
+            mostrarNaves(misNaves);
+            ordenarPorNombreBurbuja(misNaves);
+            mostrarNaves(misNaves);
+
+            //mostrar los datos de la nave con dicho nombre, mensaje de “no encontrado” en caso contrario
+            pos=busquedaBinariaNombre(misNaves,nombre);
+            ordenarPorPuntosSeleccion(misNaves);
+            mostrarNaves(misNaves);
+            ordenarPorPuntosInsercion(misNaves);
+            mostrarNaves(misNaves);
+            ordenarPorNombreSeleccion(misNaves);
+            mostrarNaves(misNaves);
+            ordenarPorNombreInsercion(misNaves);
+            mostrarNaves(misNaves);
         }
     }
     //Método para mostrar todas las naves
@@ -69,4 +93,48 @@ public class L4_DemoBatalla {
         }
         return flota[0];
     }
+    //Método para buscar la primera nave con un nombre que se pidió por teclado
+    public static int busquedaLinealNombre(Nave[] flota, String s){
+        for(int i = 0; i < flota.length; i++){
+            if(flota[i].getNombre().equals(s)){
+                return i;
+            }
+        }
+        return -1;
+    }
+    public static void printLinealNombre(Nave [] flota, int pos){
+        if(pos < 0){
+            System.out.println("No encontrado");
+        }
+        else{
+            System.out.println("Datos:");
+            System.out.println(flota[pos]);
+        }
+    }
+    //Método que ordena por número de puntos de menor a mayor
+    public static void ordenarPorPuntosBurbuja(Nave[] flota){
+        for(int i = 0; i < flota.length; i++){
+            for(int j = 0; j < flota.length - i -1; j++){
+                if (flota[j].getPuntos() >= flota[j + 1].getPuntos()){
+                    Nave aux = flota[j];
+                    flota[j] = flota[j + 1];
+                    flota[j + 1] = aux;
+                }
+            }
+        }
+    }
+    public static void ordenarPorNombreBurbuja(Nave [] flota){
+        for(int i = 0; i < flota.length; i++){
+            for(int j = 0; j < flota.length - i - 1; j++){
+                if(flota[j].getNombre().charAt(0) > 
+                   flota[j + 1].getNombre().charAt(0)){
+                    Nave aux = flota[j];
+                    flota[j] = flota[j + 1];
+                    flota[j + 1] = aux;
+                   }
+            }
+        }
+
+    }
+
 }

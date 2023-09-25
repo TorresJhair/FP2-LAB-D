@@ -54,6 +54,6 @@ public class L4_Nave {
     }
     // Completar con otros métodos necesarios
     public String toString(){
-        return "Nombre" + nombre + " E: " + estado + " P: " + puntos;
+        return "Nombre: " + nombre + " E: " + estado + " P: " + puntos;
     }
 }
