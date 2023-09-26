@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Ejercicio02{
+public class Ejercicio02_LAB03{
     public static void main (String [] args){
         Soldado [] ejercito = new Soldado[5];
         ingresarSoldados(ejercito);
