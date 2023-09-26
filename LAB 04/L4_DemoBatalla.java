@@ -20,6 +20,7 @@ public class L4_DemoBatalla {
             System.out.print("Puntos: ");
             punt = sc.nextInt();
             misNaves[i] = new Nave(nomb, fil, col, est, punt); 
+        }
             System.out.println("\nNaves creadas:");
             mostrarNaves(misNaves);
             mostrarPorNombre(misNaves);
@@ -40,16 +41,20 @@ public class L4_DemoBatalla {
             mostrarNaves(misNaves);
 
             //mostrar los datos de la nave con dicho nombre, mensaje de “no encontrado” en caso contrario
-            pos=busquedaBinariaNombre(misNaves,nombre);
+            pos = busquedaBinariaNombre(misNaves,nombre);
+            printBinariaNombre(misNaves, pos);
+
+            //Puntos
             ordenarPorPuntosSeleccion(misNaves);
             mostrarNaves(misNaves);
             ordenarPorPuntosInsercion(misNaves);
             mostrarNaves(misNaves);
+
+            //Nombres
             ordenarPorNombreSeleccion(misNaves);
             mostrarNaves(misNaves);
             ordenarPorNombreInsercion(misNaves);
             mostrarNaves(misNaves);
-        }
     }
     //Método para mostrar todas las naves
     public static void mostrarNaves(Nave [] flota){
@@ -134,7 +139,67 @@ public class L4_DemoBatalla {
                    }
             }
         }
-
+    }
+    public static int busquedaBinariaNombre(Nave [] flota, String nombre){
+        int bajo = 0, alto = flota.length -1;
+        int medio;
+        do{
+            medio = (int)((bajo + alto) / 2);
+            if(flota[medio].getNombre().equals(nombre)){
+                return medio;
+            }
+            else{
+                if(nombre.charAt(0) < flota[medio].getNombre().charAt(0)){
+                    alto = medio - 1;
+                }
+                else{
+                    bajo = medio + 1;
+                }
+            }
+        }while(bajo <= alto);
+        return -1;
+    }
+    public static void printBinariaNombre(Nave [] flota, int pos){
+        if (pos < 0){
+            System.out.println("No encontrado");
+        }
+        else{
+            System.out.println("Datos:");
+            System.out.println(flota[pos]);
+        }
+    }
+    public static void ordenarPorPuntosSeleccion(Nave [] flota){
+        int minIndex = 0;
+        Nave aux;
+        for(int j = 0; j < flota.length; j++){
+            //Menor indice
+            for(int i = j; i < flota.length; i++){
+                if (flota[i].getPuntos() < flota[minIndex].getPuntos()){
+                    minIndex = i;
+                }
+            }
+            //Intercambio
+            aux = flota[j];
+            flota[j] = flota[minIndex];
+            flota[minIndex] = aux;
+        }
+    }
+    public static void ordenarPorNombreSeleccion(Nave [] flota){
+        int minIndex = 0;
+        Nave aux;
+        for(int j = 0; j < flota.length; j++){
+            //Min indice
+            for(int i = j; i < flota.length; i++){
+                if (flota[i].getNombre().charAt(0) < 
+                    flota[minIndex].getNombre().charAt(0)){
+                    minIndex = i;
+                }
+            }
+            //Intercambio
+            aux = flota[j];
+            flota[j] = flota[minIndex];
+            flota[minIndex] = aux;
+        }
     }
 
 }
