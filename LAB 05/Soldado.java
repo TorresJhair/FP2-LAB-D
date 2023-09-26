@@ -13,17 +13,6 @@ class Soldado{
         columna = colum;
     }
 
-    //Figuras en Tablero
-    public static String cuadroVacio(){
-        return "|||||\n" + 
-               "|||||\n" + 
-               "|||||";
-    }
-    public static String cuadroLleno(){
-        return "#####\n" + 
-               "#####\n" + 
-               "#####";
-    }  
     //Setters
     public void setNombre(String n){
         nombre = n;
@@ -58,6 +47,9 @@ class Soldado{
         return figura;
     }
     public String toString(){
-        return "Nombre: " + nombre + "\t - Vida: " + vida;
+        return "Nombre: " + nombre + 
+                "\nVida: " + vida +
+                "\nFila: " + (fila + 1) +
+                "\nColumna: " + ((char)(columna + 65));
     }        
 }
