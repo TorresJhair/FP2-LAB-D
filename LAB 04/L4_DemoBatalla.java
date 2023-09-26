@@ -201,5 +201,32 @@ public class L4_DemoBatalla {
             flota[minIndex] = aux;
         }
     }
+    public static void ordenarPorPuntosInsercion(Nave [] flota){
+        for (int i = 1; i < flota.length; i++) {
+            Nave aux = flota[i];
+            int j = i - 1;
 
+            while (j >= 0 && flota[j].getPuntos() > aux.getPuntos()) {
+                flota[j + 1] = flota[j];
+                j--;
+            }
+
+            flota[j + 1] = aux;
+        }
+    }
+    public static void ordenarPorNombreInsercion(Nave [] flota){
+        for (int i = 1; i < flota.length; i++) {
+            Nave aux = flota[i];
+            int j = i - 1;
+
+            while (j >= 0 && 
+                   flota[j].getNombre().charAt(0) > 
+                   aux.getNombre().charAt(0)) {
+
+                flota[j + 1] = flota[j];
+                j--;
+            }
+            flota[j + 1] = aux;
+        }
+    }
 }
