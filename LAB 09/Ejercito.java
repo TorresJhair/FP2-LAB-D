@@ -39,9 +39,8 @@ class Ejercito {
 
     //Metodos de clase
     //Estadisticos
-
     public void prntStats(){
-        System.out.print("EJERCITO " + ejercito.get(0).getEquipo());
+        System.out.println("EJERCITO " + ejercito.get(0).getEquipo());
         List<Soldado> ejerOrdenado = sortByHp(this.getEjercito());
         maxHp(ejerOrdenado);
         promedHp(ejerOrdenado);
@@ -91,9 +90,10 @@ class Ejercito {
     }
     public static List <Soldado> clone(List <Soldado> ejer){
         List<Soldado> clone = new ArrayList<>();
-        for(int i = 0; i < ejer.size(); i++)
-            clone.set(i, ejer.get(i));
-        
+        for(int i = 0; i < ejer.size(); i++){
+            clone.add(null);
+            clone.set(i, ejer.get(i));     
+        }       
         return clone;
     }
 }

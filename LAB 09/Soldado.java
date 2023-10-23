@@ -13,6 +13,7 @@ class Soldado {
     private int columna;
     private String equipo;
 
+    //Constructores
     public Soldado(String nombre, int nivelAtaque, int nivelDefensa, int nivelVida, 
                     int vidaActual, int velocidad, String actitud, boolean vive,
                     int fila, int columna) {

@@ -1,5 +1,3 @@
-import java.util.*;
-
 class Tablero {
     private int fila;
     private int columna;
@@ -50,7 +48,7 @@ class Tablero {
                 }
                 System.out.print("\t");
                 for(int j = 0; j < tablero[i].length; j++){
-                    String espacio = "   ";
+                    String espacio = "\t";
                     if(tablero[i][j] == null){
                         System.out.print("!!!!!" );
                     }
@@ -71,7 +69,6 @@ class Tablero {
                     }
                     //Imrpime espacio entre columnas
                     System.out.print(espacio);
-
                 }
                 System.out.println();
             }
@@ -79,9 +76,9 @@ class Tablero {
         }
     }
     public static void prntColumnas(){
-        System.out.print("\t ");
-        for(int i = 65; i <= 74; i++){
-            System.out.print((char)(i) + "      ");
+        for(int i = 65; i <= 72; i++){
+            System.out.print("\t  ");
+            System.out.print((char)(i));
         }
         System.out.println();
     }
